@@ -88,6 +88,7 @@ RQ_QUEUES = {
     'gamification_challenges': {
         'HOST': 'localhost',
         'PORT': 6379,
+        'DB': '1',
         'ASYNC': True,
     },
     # Add more queues if needed
@@ -133,6 +134,25 @@ STATIC_ROOT = os.path.join( BASE_DIR, 'rank/static' )
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'app.log',  # Set your desired log file name
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 CRONJOBS = [
-    ('*/2 * * * *', 'rank.cron.cronjob')
+    ('*/1 * * * *', 'rank.cron.my_scheduled_job')
 ]
