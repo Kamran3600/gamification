@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = env.bool('DEBUG', default=True)
 SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = []
@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'gamification.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('coreDirectiondb'),
-        'USER': env('root'),
-        'PASSWORD': env('mysql'),
-        'HOST': env('localhost'),
-        'PORT': env('3306'),
+        'NAME': os.getenv('DB_NAME', 'coreDirectiondb'),  # Update with your actual database name
+        'USER': os.getenv('DB_USER', 'root'),            # Update with your actual database user
+        'PASSWORD': os.getenv('DB_PASSWORD', 'mysql'),   # Update with your actual database password
+        'HOST': os.getenv('DB_HOST', 'localhost'),       # Update with your actual database host
+        'PORT': os.getenv('DB_PORT', '3306'),            # Update with your actual database port
     },
 }
 
