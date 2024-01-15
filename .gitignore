@@ -1,1 +1,4 @@
 .idea
+.venv
+app.log
+.env

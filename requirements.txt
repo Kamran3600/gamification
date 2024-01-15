@@ -1,2 +1,5 @@
 Django==5.0.1
 mongoengine==0.27.0
+environ
+django_rq
+django_crontab
