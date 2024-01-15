@@ -2,7 +2,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.utils import timezone
 from .models import FosUserUser, GamificationChallenge
-from rank.handler import process_relevant_challenges
+from .handler import process_relevant_challenges
 
 
 def fos_user_user(request):
