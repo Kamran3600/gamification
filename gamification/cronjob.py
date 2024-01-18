@@ -1,10 +1,10 @@
 import logging
 
-from rank.views import process_and_update_mongo
+from gamification.views import process_and_update_mongo
 
 logger = logging.getLogger(__name__)
 
 
-def my_scheduled_job():
+def rank_update_job():
     process_and_update_mongo(None)
     logger.info("Cronjob ran successfully")

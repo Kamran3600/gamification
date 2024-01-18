@@ -3,8 +3,7 @@ from operator import itemgetter
 
 
 def update_mongo_participants(users_info, total_participants):
-    sorted_users_info = sorted(users_info, key=itemgetter('totalCorePoints'), reverse=True)
-    for index, user_info in enumerate(sorted_users_info, start=1):
+    for index, user_info in enumerate(users_info, start=1):
         ChallengeParticipant.objects(id=user_info['user_id']).update_one(
             upsert=True,
             challengeID=user_info['challengeID'],
@@ -24,8 +23,9 @@ def update_mongo_participants(users_info, total_participants):
             totalWatchedVideoToday=user_info['totalWatchedVideoToday'],
             checkins=user_info['checkins'],
             numberOfParticipant=total_participants
-
         )
+
+        # Optional: Printing for debugging or logging purposes
         print(
             f"Updated user {user_info['user_id']} - "
             f"challengeID: {user_info['challengeID']}, "

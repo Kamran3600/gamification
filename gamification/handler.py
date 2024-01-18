@@ -5,7 +5,7 @@ from django_rq import job
 from .service_challengeparticipants import update_mongo_participants
 
 
-@job('gamification_challenges')
+@job
 def process_relevant_challenges(challenge_ids):
     gamif_challenges = GamificationChallenge.objects.filter(
         id__in=challenge_ids, end_date__gt=timezone.now()

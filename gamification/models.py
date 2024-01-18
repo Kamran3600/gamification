@@ -534,30 +534,6 @@ class UserAwardPoint(models.Model):
         db_table = 'user_award_point'
 
 
-class UserBankInfo(models.Model):
-    id = models.AutoField(primary_key=True)
-    user_id = models.IntegerField(null=True)
-    account_title = models.CharField(max_length=100, null=True, blank=True)
-    bank_name = models.CharField(max_length=100, null=True, blank=True)
-    iban = models.CharField(max_length=255, null=True, blank=True)
-    branch = models.CharField(max_length=100, null=True, blank=True)
-    account_no = models.TextField(null=True, blank=True)
-    branch_code = models.SmallIntegerField(null=True, blank=True)
-    swift_code = models.CharField(max_length=255, null=True, blank=True)
-    bank_address = models.CharField(max_length=255, null=True, blank=True)
-    secret_key = models.CharField(max_length=100, null=True, blank=True)
-    publish_key = models.CharField(max_length=100, null=True, blank=True)
-    created_date = models.DateTimeField()
-    updated_date = models.DateTimeField()
-    currency_code = models.CharField(max_length=100, null=True, blank=True)
-    country_code = models.CharField(max_length=2, null=True, blank=True)
-    fos_user_user = models.ForeignKey('FosUserUser', on_delete=models.RESTRICT, related_name='user_bank_info',
-                                      null=True)
-
-    class Meat:
-        db_table = 'user_bank_info'
-
-
 class UserCompany(models.Model):
     id = models.AutoField(primary_key=True)
     user_id = models.IntegerField(null=True)

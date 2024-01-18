@@ -1,6 +1,9 @@
 from mongoengine import Document, StringField, IntField, connect
-
-connect("Core_direction")
+import os
+from dotenv import load_dotenv
+load_dotenv()
+mongodb_uri = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/Core_direction')
+connect(host=mongodb_uri)
 
 
 class ChallengeParticipant(Document):
